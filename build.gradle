@@ -1,0 +1,28 @@
+apply plugin: 'java'
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.3.1'
+
+    testCompile 'io.github.prashant-ramcharan:courgette-jvm:1.3.0'
+}
+
+task runFeatures(type: Test, dependsOn: testClasses) {
+    include '**/FeatureSuite.class'
+
+    outputs.upToDateWhen { false }
+}
+
+task runScenarios(type: Test, dependsOn: testClasses) {
+    include '**/ScenarioSuite.class'
+
+    outputs.upToDateWhen { false }
+}
