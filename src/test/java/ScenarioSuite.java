@@ -16,8 +16,8 @@ import org.junit.runner.RunWith;
                 tags = {"@regression", "~@excluded"},
                 plugin = {
                         "pretty",
-                        "json:target/courgette-report/courgette.json",
-                        "html:target/courgette-report/courgette.html"}
+                        "json:target/cucumber-report/cucumber.json",
+                        "html:target/cucumber-report/cucumber.html"}
         ))
 public class ScenarioSuite {
 }
