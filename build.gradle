@@ -12,17 +12,19 @@ repositories {
 dependencies {
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.3.1'
 
-    testCompile 'io.github.prashant-ramcharan:courgette-jvm:1.4.0'
+    testCompile 'io.github.prashant-ramcharan:courgette-jvm:1.4.1'
 }
 
-task runFeatures(type: Test, dependsOn: testClasses) {
-    include '**/FeatureSuite.class'
+tasks.withType(Test) {
+    systemProperties = System.getProperties()
+}
 
+task runFeatures(type: Test) {
+    include '**/FeatureSuite.class'
     outputs.upToDateWhen { false }
 }
 
-task runScenarios(type: Test, dependsOn: testClasses) {
+task runScenarios(type: Test) {
     include '**/ScenarioSuite.class'
-
     outputs.upToDateWhen { false }
 }
