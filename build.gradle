@@ -12,7 +12,7 @@ repositories {
 dependencies {
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.3.1'
 
-    testCompile 'io.github.prashant-ramcharan:courgette-jvm:1.4.1'
+    testCompile 'io.github.prashant-ramcharan:courgette-jvm:1.4.2'
 }
 
 tasks.withType(Test) {
@@ -26,5 +26,10 @@ task runFeatures(type: Test) {
 
 task runScenarios(type: Test) {
     include '**/ScenarioSuite.class'
+    outputs.upToDateWhen { false }
+}
+
+task runScenariosWithFailure(type: Test) {
+    include '**/ScenarioWithFailureSuite.class'
     outputs.upToDateWhen { false }
 }
