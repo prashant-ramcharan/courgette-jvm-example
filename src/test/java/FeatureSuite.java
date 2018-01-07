@@ -17,7 +17,8 @@ import org.junit.runner.RunWith;
                 plugin = {
                         "pretty",
                         "json:target/cucumber-report/cucumber.json",
-                        "html:target/cucumber-report/cucumber.html"}
+                        "html:target/cucumber-report/cucumber.html"},
+                strict = true
         ))
 public class FeatureSuite {
 }
