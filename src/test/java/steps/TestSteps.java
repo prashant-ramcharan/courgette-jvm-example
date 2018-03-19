@@ -4,9 +4,9 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.github.pramcharan.wd.binary.downloader.WebDriverBinaryDownloader;
+import io.github.pramcharan.wd.binary.downloader.enums.BrowserType;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.net.URL;
 
 import static org.junit.Assert.assertTrue;
 
@@ -15,7 +15,7 @@ public class TestSteps {
 
     @Before
     public void before() {
-        System.setProperty("webdriver.chrome.driver", getDriverExecutable().getPath());
+        WebDriverBinaryDownloader.create().downloadLatestBinaryAndConfigure(BrowserType.CHROME);
         driver = new ChromeDriver();
     }
 
@@ -34,17 +34,5 @@ public class TestSteps {
     @Then("I verify Stack Overflow question page (\\d+) is opened")
     public void verifyCorrectQuestionPageIsOpened(Integer page) {
         assertTrue(driver.getTitle().contains("Page " + page));
-    }
-
-    private URL getDriverExecutable() {
-        final String osName = System.getProperty("os.name").toLowerCase();
-
-        if (osName.contains("mac")) {
-            return ClassLoader.getSystemResource("drivers/mac_chromedriver");
-        } else if (osName.contains("windows")) {
-            return ClassLoader.getSystemResource("drivers/win_chromedriver");
-        } else {
-            throw new RuntimeException("Chrome driver executable is not provided for this operating system!");
-        }
     }
 }

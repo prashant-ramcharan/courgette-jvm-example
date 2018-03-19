@@ -5,11 +5,7 @@ An example project showing how to use Courgette-JVM.
 ## System Requirements
 
 * Google Chrome
-* Mac OS / Windows
-
-## Included
-
-* Chrome Driver executable
+* MacOS / Windows / Linux
 
 ## Test Execution
 
