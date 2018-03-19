@@ -15,7 +15,7 @@ dependencies {
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '3.11.0'
 
     testCompile 'io.github.prashant-ramcharan:courgette-jvm:1.5.1'
-    testCompile 'io.github.prashant-ramcharan:webdriver-binary-downloader:1.2.0'
+    testCompile 'io.github.prashant-ramcharan:webdriver-binary-downloader:1.2.1'
 }
 
 tasks.withType(Test) {

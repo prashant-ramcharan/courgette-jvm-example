@@ -6,12 +6,13 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.github.pramcharan.wd.binary.downloader.WebDriverBinaryDownloader;
 import io.github.pramcharan.wd.binary.downloader.enums.BrowserType;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.Assert.assertTrue;
 
 public class TestSteps {
-    private ChromeDriver driver;
+    private WebDriver driver;
 
     @Before
     public void before() {
