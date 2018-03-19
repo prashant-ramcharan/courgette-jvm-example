@@ -28,7 +28,7 @@ public class TestSteps {
 
     @When("I navigate to Stack Overflow question page (\\d+)")
     public void navigateToStackOverflowQuestionPage(Integer page) {
-        driver.navigate().to("http://stackoverflow.com/questions?page=" + page);
+        driver.navigate().to("https://stackoverflow.com/questions?page=" + page);
     }
 
     @Then("I verify Stack Overflow question page (\\d+) is opened")
