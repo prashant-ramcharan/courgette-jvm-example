@@ -1,11 +1,14 @@
 package steps;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.github.pramcharan.wd.binary.downloader.WebDriverBinaryDownloader;
 import io.github.pramcharan.wd.binary.downloader.enums.BrowserType;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -21,7 +24,11 @@ public class TestSteps {
     }
 
     @After
-    public void after() {
+    public void after(Scenario scenario) {
+        if (scenario.isFailed()){{
+            TakesScreenshot screenshot = (TakesScreenshot) driver;
+            scenario.embed(screenshot.getScreenshotAs(OutputType.BYTES), "image/png");
+        }}
         if (driver != null) {
             driver.quit();
         }

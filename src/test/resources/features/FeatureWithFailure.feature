@@ -1,4 +1,4 @@
-@regression_failure
+@regression
 Feature: Feature with Failure
 
   Scenario: Ensure that stack overflow question page 2 can be opened (force scenario to fail)
