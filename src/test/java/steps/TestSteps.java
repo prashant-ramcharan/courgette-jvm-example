@@ -26,6 +26,8 @@ public class TestSteps {
     @After
     public void after(Scenario scenario) {
         if (scenario.isFailed()){{
+            scenario.write("Scenario failed so capturing a screenshot");
+
             TakesScreenshot screenshot = (TakesScreenshot) driver;
             scenario.embed(screenshot.getScreenshotAs(OutputType.BYTES), "image/png");
         }}
