@@ -14,7 +14,7 @@ dependencies {
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.11.0'
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '3.11.0'
 
-    testCompile 'io.github.prashant-ramcharan:courgette-jvm:2.3.1'
+    testCompile 'io.github.prashant-ramcharan:courgette-jvm:2.3.2'
     testCompile 'io.github.prashant-ramcharan:webdriver-binary-downloader:1.2.2'
 }
 
@@ -22,12 +22,26 @@ tasks.withType(Test) {
     systemProperties = System.getProperties()
 }
 
-task runFeatures(type: Test) {
-    include '**/FeatureSuite.class'
+task runFeaturesUsingJUnit(type: Test) {
+    include '**/suites/junit/FeatureSuite.class'
     outputs.upToDateWhen { false }
 }
 
-task runScenarios(type: Test) {
-    include '**/ScenarioSuite.class'
+task runScenariosUsingJUnit(type: Test) {
+    include '**/suites/junit/ScenarioSuite.class'
+    outputs.upToDateWhen { false }
+}
+
+task runFeaturesUsingTestNG(type: Test) {
+    useTestNG()
+
+    include '**/suites/testng/FeatureSuite.class'
+    outputs.upToDateWhen { false }
+}
+
+task runScenariosUsingTestNG(type: Test) {
+    useTestNG()
+
+    include '**/suites/testng/ScenarioSuite.class'
     outputs.upToDateWhen { false }
 }

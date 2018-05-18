@@ -14,8 +14,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static org.junit.Assert.assertTrue;
-
 public class TestSteps {
     private WebDriver driver;
 
@@ -50,12 +48,14 @@ public class TestSteps {
 
     @Then("I verify Stack Overflow question page (\\d+) is opened")
     public void verifyCorrectQuestionPageIsOpened(Integer page) {
-        assertTrue(driver.getTitle().contains("Page " + page));
+        if (!driver.getTitle().contains("Page " + page)) {
+            throw new RuntimeException("The Stack Overflow page title does not contain the page number: " + page);
+        }
     }
 
     @When("I use the following data table to navigate to a Stack Overflow question page")
     public void useTheFollowingDataTable(DataTable dataTable) {
-       String page = dataTable.getPickleRows().stream().skip(1).findFirst().get().getCells().get(0).getValue();
-       navigateToStackOverflowQuestionPage(Integer.valueOf(page));
+        String page = dataTable.getPickleRows().stream().skip(1).findFirst().get().getCells().get(0).getValue();
+        navigateToStackOverflowQuestionPage(Integer.valueOf(page));
     }
 }

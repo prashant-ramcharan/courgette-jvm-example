@@ -1,3 +1,5 @@
+package suites.junit;
+
 import courgette.api.CourgetteOptions;
 import courgette.api.CourgetteRunLevel;
 import courgette.api.junit.Courgette;
