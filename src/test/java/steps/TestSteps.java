@@ -1,12 +1,12 @@
 package steps;
 
-import cucumber.api.DataTable;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
 import io.github.pramcharan.wd.binary.downloader.WebDriverBinaryDownloader;
 import io.github.pramcharan.wd.binary.downloader.enums.BrowserType;
 import org.openqa.selenium.OutputType;
@@ -55,7 +55,7 @@ public class TestSteps {
 
     @When("I use the following data table to navigate to a Stack Overflow question page")
     public void useTheFollowingDataTable(DataTable dataTable) {
-        String page = dataTable.getPickleRows().stream().skip(1).findFirst().get().getCells().get(0).getValue();
-        navigateToStackOverflowQuestionPage(Integer.valueOf(page));
+        int pageNumber = Integer.valueOf(dataTable.cell(1, 0));
+        navigateToStackOverflowQuestionPage(pageNumber);
     }
 }
