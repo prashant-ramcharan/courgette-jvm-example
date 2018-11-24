@@ -41,12 +41,12 @@ public class TestSteps {
         driver.navigate().to("https://stackoverflow.com/");
     }
 
-    @When("I navigate to Stack Overflow question page (\\d+)")
+    @When("I navigate to Stack Overflow question page (.*)")
     public void navigateToStackOverflowQuestionPage(Integer page) {
         driver.navigate().to("https://stackoverflow.com/questions?page=" + page);
     }
 
-    @Then("I verify Stack Overflow question page (\\d+) is opened")
+    @Then("I verify Stack Overflow question page (.*) is opened")
     public void verifyCorrectQuestionPageIsOpened(Integer page) {
         if (!driver.getTitle().contains("Page " + page)) {
             throw new RuntimeException("The Stack Overflow page title does not contain the page number: " + page);
