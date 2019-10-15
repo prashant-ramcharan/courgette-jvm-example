@@ -2,8 +2,8 @@ package suites.testng;
 
 import courgette.api.CourgetteOptions;
 import courgette.api.CourgetteRunLevel;
+import courgette.api.CucumberOptions;
 import courgette.api.testng.TestNGCourgette;
-import cucumber.api.CucumberOptions;
 import org.testng.annotations.Test;
 
 @Test

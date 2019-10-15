@@ -1,11 +1,7 @@
 package suites.junit;
 
-import courgette.api.CourgetteAfterAll;
-import courgette.api.CourgetteBeforeAll;
-import courgette.api.CourgetteOptions;
-import courgette.api.CourgetteRunLevel;
+import courgette.api.*;
 import courgette.api.junit.Courgette;
-import cucumber.api.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Courgette.class)
