@@ -1,12 +1,11 @@
 package steps;
 
-import cucumber.api.Scenario;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import io.cucumber.datatable.DataTable;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import io.github.pramcharan.wd.binary.downloader.WebDriverBinaryDownloader;
 import io.github.pramcharan.wd.binary.downloader.enums.BrowserType;
 import org.openqa.selenium.OutputType;
@@ -41,21 +40,21 @@ public class TestSteps {
         driver.navigate().to("https://stackoverflow.com/");
     }
 
-    @When("I navigate to Stack Overflow question page (.*)")
-    public void navigateToStackOverflowQuestionPage(Integer page) {
+    @When("I navigate to Stack Overflow question page {int}")
+    public void i_navigate_to_Stack_Overflow_question_page(Integer page) {
         driver.navigate().to("https://stackoverflow.com/questions?page=" + page);
     }
 
-    @Then("I verify Stack Overflow question page (.*) is opened")
-    public void verifyCorrectQuestionPageIsOpened(Integer page) {
+    @Then("I verify Stack Overflow question page {int} is opened")
+    public void i_verify_Stack_Overflow_question_page_is_opened(Integer page) {
         if (!driver.getTitle().contains("Page " + page)) {
             throw new RuntimeException("The Stack Overflow page title does not contain the page number: " + page);
         }
     }
 
     @When("I use the following data table to navigate to a Stack Overflow question page")
-    public void useTheFollowingDataTable(DataTable dataTable) {
+    public void i_use_the_following_data_table_to_navigate_to_a_Stack_Overflow_question_page(io.cucumber.datatable.DataTable dataTable) {
         int pageNumber = Integer.valueOf(dataTable.cell(1, 0));
-        navigateToStackOverflowQuestionPage(pageNumber);
+        i_navigate_to_Stack_Overflow_question_page(pageNumber);
     }
 }
