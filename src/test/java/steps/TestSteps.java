@@ -8,6 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.pramcharan.wd.binary.downloader.WebDriverBinaryDownloader;
 import io.github.pramcharan.wd.binary.downloader.enums.BrowserType;
+import org.junit.Assert;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -15,11 +16,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestSteps {
     private WebDriver driver;
+    private Scenario scenario;
 
     @Before
-    public void before() {
+    public void before(Scenario scenario) {
         WebDriverBinaryDownloader.create().downloadLatestBinaryAndConfigure(BrowserType.CHROME);
         driver = new ChromeDriver();
+        this.scenario = scenario;
     }
 
     @After
@@ -37,6 +40,9 @@ public class TestSteps {
 
     @Given("^I navigate to Stack Overflow$")
     public void iNavigateToStackOverflow() {
+        if (scenario.getName().contains("page 4")) {
+            Assert.fail("I failed in a background step");
+        }
         driver.navigate().to("https://stackoverflow.com/");
     }
 

@@ -1,10 +1,10 @@
-@regression
+@@issue-167
 Feature: Feature with Examples
 
   Background:
     Given I navigate to Stack Overflow
 
-  Scenario Outline: Ensure that stack overflow question pages can be opened
+  Scenario Outline: Ensure that stack overflow question page <page> can be opened
     When I navigate to Stack Overflow question page <page>
     Then I verify Stack Overflow question page <page> is opened
 
