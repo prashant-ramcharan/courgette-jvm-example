@@ -1,4 +1,4 @@
-@@issue-167
+@issue-167
 Feature: Feature with Examples
 
   Background:
