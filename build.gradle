@@ -20,6 +20,7 @@ dependencies {
 
 tasks.withType(Test) {
     systemProperties = System.getProperties()
+    systemProperties.remove("java.endorsed.dirs")
 }
 
 task runFeaturesUsingJUnit(type: Test) {
