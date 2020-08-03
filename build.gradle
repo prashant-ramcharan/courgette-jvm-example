@@ -14,7 +14,7 @@ dependencies {
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.11.0'
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '3.11.0'
 
-    testCompile 'io.github.prashant-ramcharan:courgette-jvm:4.6.2'
+    testCompile 'io.github.prashant-ramcharan:courgette-jvm:5.0.0'
     testCompile 'io.github.prashant-ramcharan:webdriver-binary-downloader:1.2.2'
 }
 

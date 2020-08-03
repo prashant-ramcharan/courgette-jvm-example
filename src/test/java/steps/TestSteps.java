@@ -12,6 +12,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class TestSteps {
     private WebDriver driver;
@@ -19,16 +20,19 @@ public class TestSteps {
     @Before
     public void before() {
         WebDriverBinaryDownloader.create().downloadLatestBinaryAndConfigure(BrowserType.CHROME);
-        driver = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        options.setHeadless(true);
+        driver = new ChromeDriver(options);
     }
 
     @After
     public void after(Scenario scenario) {
         if (scenario.isFailed()) {
-            scenario.write("Scenario failed so capturing a screenshot");
+            scenario.log("Scenario failed so capturing a screenshot");
 
             TakesScreenshot screenshot = (TakesScreenshot) driver;
-            scenario.embed(screenshot.getScreenshotAs(OutputType.BYTES), "image/png");
+            scenario.attach(screenshot.getScreenshotAs(OutputType.BYTES), "image/png", scenario.getName());
         }
         if (driver != null) {
             driver.quit();

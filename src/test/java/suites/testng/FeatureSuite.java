@@ -20,8 +20,8 @@ import org.testng.annotations.Test;
                 plugin = {
                         "pretty",
                         "json:build/cucumber-report/cucumber.json",
-                        "html:build/cucumber-report/cucumber.html"},
-                strict = true
+                        "html:build/cucumber-report/cucumber.html",
+                        "message:build/cucumber-report/cucumber.ndjson"}
         ))
 public class FeatureSuite extends TestNGCourgette {
 }
