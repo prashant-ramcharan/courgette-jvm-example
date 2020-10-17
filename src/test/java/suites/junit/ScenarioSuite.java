@@ -13,6 +13,8 @@ import org.junit.runner.RunWith;
         rerunFailedScenarios = true,
         showTestOutput = true,
         reportTargetDir = "build",
+        environmentInfo = "browser=chrome; git_branch=master; project_info=Courgette-JVM is awesome!",
+        plugin = "extentreports",
         cucumberOptions = @CucumberOptions(
                 features = "src/test/resources/features",
                 glue = "steps",
