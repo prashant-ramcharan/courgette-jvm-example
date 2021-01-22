@@ -1,6 +1,6 @@
-# Courgette-JVM Example
+# Courgette-JVM with Gradle Example
 
-An example project showing how to use Courgette-JVM.
+An example project showing how to use Courgette-JVM with Gradle.
 
 ## System Requirements
 
