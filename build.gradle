@@ -6,6 +6,7 @@ compileJava {
 }
 
 repositories {
+    mavenCentral()
     jcenter()
 }
 
