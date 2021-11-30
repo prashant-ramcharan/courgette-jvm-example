@@ -7,16 +7,14 @@ compileJava {
 
 repositories {
     mavenCentral()
-    jcenter()
 }
 
 dependencies {
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.11.0'
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.11.0'
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '3.11.0'
-
-    testCompile 'io.github.prashant-ramcharan:courgette-jvm:5.12.0'
-    testCompile 'io.github.prashant-ramcharan:webdriver-binary-downloader:1.2.2'
+    testCompile 'io.github.bonigarcia:webdrivermanager:5.0.3'
+    testCompile 'io.github.prashant-ramcharan:courgette-jvm:6.0.0'
 }
 
 tasks.withType(Test) {
@@ -36,14 +34,12 @@ task runScenariosUsingJUnit(type: Test) {
 
 task runFeaturesUsingTestNG(type: Test) {
     useTestNG()
-
     include '**/suites/testng/FeatureSuite.class'
     outputs.upToDateWhen { false }
 }
 
 task runScenariosUsingTestNG(type: Test) {
     useTestNG()
-
     include '**/suites/testng/ScenarioSuite.class'
     outputs.upToDateWhen { false }
 }

@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         cucumberOptions = @CucumberOptions(
                 features = "src/test/resources/features",
                 glue = "steps",
-                tags = {"@regression", "not @excluded"},
+                tags = "@regression and not @excluded",
                 publish = true,
                 plugin = {
                         "pretty",

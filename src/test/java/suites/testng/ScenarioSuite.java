@@ -18,7 +18,7 @@ import org.testng.annotations.Test;
         cucumberOptions = @CucumberOptions(
                 features = "src/test/resources/features",
                 glue = "steps",
-                tags = {"@regression", "not @excluded"},
+                tags = "@regression and not @excluded",
                 publish = true,
                 plugin = {
                         "pretty",
