@@ -1,6 +1,7 @@
 package suites.junit;
 
 import courgette.api.CourgetteOptions;
+import courgette.api.CourgettePlugin;
 import courgette.api.CourgetteRunLevel;
 import courgette.api.CucumberOptions;
 import courgette.api.junit.Courgette;
@@ -14,7 +15,7 @@ import org.junit.runner.RunWith;
         showTestOutput = true,
         reportTargetDir = "build",
         environmentInfo = "browser=chrome; git_branch=master; project_info=Courgette-JVM is awesome!",
-        plugin = "extentreports",
+        plugin = CourgettePlugin.EXTENT_REPORTS,
         cucumberOptions = @CucumberOptions(
                 features = "src/test/resources/features",
                 glue = "steps",
