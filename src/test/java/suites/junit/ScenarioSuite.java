@@ -3,6 +3,7 @@ package suites.junit;
 import courgette.api.CourgetteOptions;
 import courgette.api.CourgettePlugin;
 import courgette.api.CourgetteRunLevel;
+import courgette.api.CourgetteTestOutput;
 import courgette.api.CucumberOptions;
 import courgette.api.junit.Courgette;
 import org.junit.runner.RunWith;
@@ -12,7 +13,7 @@ import org.junit.runner.RunWith;
         threads = 10,
         runLevel = CourgetteRunLevel.SCENARIO,
         rerunFailedScenarios = true,
-        showTestOutput = true,
+        testOutput = CourgetteTestOutput.CONSOLE,
         reportTargetDir = "build",
         environmentInfo = "browser=chrome; git_branch=master; project_info=Courgette-JVM is awesome!",
         plugin = CourgettePlugin.EXTENT_REPORTS,

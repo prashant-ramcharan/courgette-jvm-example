@@ -3,6 +3,7 @@ package suites.testng;
 import courgette.api.CourgetteOptions;
 import courgette.api.CourgettePlugin;
 import courgette.api.CourgetteRunLevel;
+import courgette.api.CourgetteTestOutput;
 import courgette.api.CucumberOptions;
 import courgette.api.testng.TestNGCourgette;
 import org.testng.annotations.Test;
@@ -12,7 +13,7 @@ import org.testng.annotations.Test;
         threads = 10,
         runLevel = CourgetteRunLevel.FEATURE,
         rerunFailedScenarios = true,
-        showTestOutput = true,
+        testOutput = CourgetteTestOutput.CONSOLE,
         reportTargetDir = "build",
         environmentInfo = "browser=chrome; git_branch=master; project_info=Courgette-JVM is awesome!",
         plugin = CourgettePlugin.EXTENT_REPORTS,
