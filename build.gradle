@@ -14,7 +14,7 @@ dependencies {
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.11.0'
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '3.11.0'
     testCompile 'io.github.bonigarcia:webdrivermanager:5.0.3'
-    testCompile 'io.github.prashant-ramcharan:courgette-jvm:6.5.1'
+    testCompile 'io.github.prashant-ramcharan:courgette-jvm:6.9.0'
 }
 
 tasks.withType(Test) {
