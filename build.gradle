@@ -1,20 +1,32 @@
 apply plugin: 'java'
 
 compileJava {
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    sourceCompatibility = 11
+    targetCompatibility = 11
 }
+
 
 repositories {
     mavenCentral()
 }
 
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.1'
+    }
+}
+
 dependencies {
-    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.11.0'
-    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.11.0'
-    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '3.11.0'
-    testCompile 'io.github.bonigarcia:webdrivermanager:5.0.3'
-    testCompile 'io.github.prashant-ramcharan:courgette-jvm:6.9.1'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '4.12.1'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '4.12.1'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '4.12.1'
+    implementation group: 'com.google.guava', name: 'guava', version: '32.1.2-jre'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.5.3'
+    implementation 'io.github.prashant-ramcharan:courgette-jvm:6.10.0'
 }
 
 tasks.withType(Test) {

@@ -12,17 +12,18 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class TestSteps {
     private WebDriver driver;
 
     @Before
-    public void before() {
-        WebDriverManager.chromedriver().setup();
-
-        ChromeOptions options = new ChromeOptions();
-        options.setHeadless(true);
-        driver = new ChromeDriver(options);
+    public void before() throws MalformedURLException {
+        configureWebDriver();
     }
 
     @After
@@ -59,5 +60,18 @@ public class TestSteps {
     public void i_use_the_following_data_table_to_navigate_to_a_Stack_Overflow_question_page(io.cucumber.datatable.DataTable dataTable) {
         int pageNumber = Integer.valueOf(dataTable.cell(1, 0));
         i_navigate_to_Stack_Overflow_question_page(pageNumber);
+    }
+
+    private void configureWebDriver() throws MalformedURLException {
+        String remoteServerUrl = System.getenv("COURGETTE_REMOTE_SERVER_URL");
+        if (remoteServerUrl != null) {
+            driver = new RemoteWebDriver(new URL(remoteServerUrl), new FirefoxOptions());
+            return;
+        }
+
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
     }
 }

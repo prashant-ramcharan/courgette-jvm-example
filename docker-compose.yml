@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  selenium:
+    image: selenium/standalone-firefox
+    shm_size: 2gb
+    environment:
+      - SE_NODE_MAX_SESSIONS=3
+
+  courgette-jvm-example:
+    image: adoptopenjdk/openjdk11
+    links:
+      - "selenium"
+    volumes:
+      - ./:/project
+    working_dir: /project
+    command: >
+        bash -c "./gradlew -Dcourgette.threads=3 runScenariosUsingJUnit"
+    environment:
+      - COURGETTE_REMOTE_SERVER_URL=http://selenium:4444

@@ -42,3 +42,11 @@ _______________________________________________________
     ````gradle
         gradle runScenariosUsingTestNG
     ````
+
+## Test Execution in Docker
+
+The following command will run all tests in a Docker container with `3 Courgette threads` and `CourgetteRunLevel.SCENARIO`
+
+````
+docker-compose up --abort-on-container-exit --remove-orphans
+````
